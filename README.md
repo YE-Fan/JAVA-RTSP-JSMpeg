@@ -8,7 +8,8 @@ using JSMpeg to play IP Camera RTSP stream
 ## demo
 ```java -jar .\mihile-cableMonitor-media-1.0-SNAPSHOT.jar```
 然后打开浏览器，输入_localhost:3000_，输入正确的rtsp地址，点击play播放，注意，rtsp地址必须正确，否则如果摄像头密码错误之类的，可能造成摄像头因为多次密码错误而被锁定设备，需要一段时间摄像头自己解锁
-![demo.png](https://github.com/YE-Fan/JAVA-RTSP-JSMpeg/demo.png)
+
+![demo.png](demo.png)
 # 环境要求
 ## ffmpeg
 在命令行输入ffmpeg -v，能够出现版本信息
