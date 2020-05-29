@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSMpeg Stream Client</title>
+    <style type="text/css">
+        html, body {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            margin: auto;
+        }
+
+        button {
+            width: 50px;
+        }
+    </style>
+
+</head>
+<body>
+<input id="urlInput" type="text" value="rtsp://${username}:${password}@${ip}:${port}/Streaming/Channels/102">
+<br>
+<button onclick="btnClick()">play</button>
+<br>
+<canvas id="video-canvas"></canvas>
+
+<script type="text/javascript" src="jsmpeg.min.js"></script>
+<script type="text/javascript">
+
+
+    function btnClick() {
+        var data = {url:document.getElementById('urlInput').value}
+        fetch('/stream/play',{
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(res) {
+            var canvas = document.getElementById('video-canvas');
+            var url = 'ws://'+document.location.hostname+':3000'+res.data.path;
+            var player = new JSMpeg.Player(url, {canvas: canvas});
+        });
+    }
+</script>
+</body>
+</html>

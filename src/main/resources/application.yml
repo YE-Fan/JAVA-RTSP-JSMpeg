@@ -1,0 +1,13 @@
+#=========Spring boot application=========
+spring:
+  application:
+    name: mihile-cableMonitor-media
+
+server:
+  port: 3000
+
+mihile:
+  # 请求 /stream/play的间隔，超过则关闭流
+  interval: 60000
+
+
