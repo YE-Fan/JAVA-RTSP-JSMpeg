@@ -7,7 +7,7 @@ using JSMpeg to play IP Camera RTSP stream
 使用JAVA调用ffmpeg拉取摄像头rtsp流，通过websocket转发，前端通过JSMpeg来接收websocket数据，播放视频
 ## demo
 ```java -jar .\mihile-cableMonitor-media-1.0-SNAPSHOT.jar```
-然后打开浏览器，输入_localhost:3000_，输入正确的rtsp地址，点击play播放，注意，rtsp地址必须正确，否则如果摄像头密码错误之类的，可能造成摄像头因为多次密码错误而被锁定设备，需要一段时间摄像头自己解锁
+然后打开浏览器，输入*localhost:3000*，输入正确的rtsp地址，点击play播放，注意，rtsp地址必须正确，否则如果摄像头密码错误之类的，可能造成摄像头因为多次密码错误而被锁定设备，需要一段时间摄像头自己解锁
 
 ![demo.png](demo.png)
 # 环境要求
@@ -44,4 +44,4 @@ Response
 
 websocket播放地址就是 ws://127.0.0.1:3000/stream/live/72b8cf14-f74b-3368-ab63-e5e1bba821b2
 
-每60s需要请求一次_POST /stream/play_否则会结束拉流
+每60s需要请求一次*POST /stream/play*否则会结束拉流
