@@ -13,7 +13,15 @@ import java.util.TimerTask;
  */
 @SpringBootApplication
 public class CableMonitorMediaServer {
+    public static boolean audio = false;
+
     public static void main(String[] args) {
+        for (String arg : args) {
+            if ("-audio".equals(arg)) {
+                audio = true;
+                break;
+            }
+        }
         SpringApplication.run(CableMonitorMediaServer.class, args);
     }
 }

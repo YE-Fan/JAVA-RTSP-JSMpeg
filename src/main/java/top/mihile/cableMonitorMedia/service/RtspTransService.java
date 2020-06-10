@@ -2,6 +2,7 @@ package top.mihile.cableMonitorMedia.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import top.mihile.cableMonitorMedia.CableMonitorMediaServer;
 import top.mihile.cableMonitorMedia.utils.RtspTransThread;
 import top.mihile.cableMonitorMedia.utils.SystemCommandExecutor;
 import top.mihile.cableMonitorMedia.utils.ThreadedStreamHandler;
@@ -42,7 +43,22 @@ public class RtspTransService {
 //        commands.add("nobuffer");
         commands.add("-codec:v");
         commands.add("mpeg1video");
-        commands.add("-an");  // 不能使音频记录,否则会大大降低转码效率，造成画面延迟卡顿
+
+        //========  audio arguments 音频相关
+        if(!CableMonitorMediaServer.audio){
+            commands.add("-an");  // no audio 不能使音频记录,否则会大大降低转码效率，造成画面延迟卡顿
+        }else {
+            commands.add("-codec:a");
+            commands.add("mp2");
+            commands.add("-ar");
+            commands.add("44100");
+            commands.add("-ac");
+            commands.add("1");
+            commands.add("-b:a");
+            commands.add("128k");
+        }
+        //========
+
         commands.add("-s");
         commands.add("640x480");
         commands.add("http://127.0.0.1:"+port+"/stream/upload/"+playChannel);
