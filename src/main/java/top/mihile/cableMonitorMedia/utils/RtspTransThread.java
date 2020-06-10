@@ -2,6 +2,7 @@ package top.mihile.cableMonitorMedia.utils;
 
 import top.mihile.cableMonitorMedia.service.RtspTransService;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -44,8 +45,10 @@ public class RtspTransThread extends Thread {
                     break;
                 }
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (InterruptedException e) {
+            // timer interrupt the thread to end the stream
+        } catch (IOException e) {
+            System.out.println("start stream fail");
         }
         System.out.println("RtspTransThread End");
     }

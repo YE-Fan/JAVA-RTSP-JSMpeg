@@ -44,7 +44,7 @@ public class RtspTransService {
         commands.add("mpeg1video");
         commands.add("-an");  // 不能使音频记录
         commands.add("-s");
-        commands.add("960x540");
+        commands.add("640x480");
         commands.add("http://127.0.0.1:"+port+"/stream/upload/"+playChannel);
 //        commands.add("ping");
 //        commands.add("baidu.com");

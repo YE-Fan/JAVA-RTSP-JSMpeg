@@ -40,15 +40,15 @@ public class WebSocketController {
         wsGroup.put(session.getId(),session);
         WebsockerService.map.put(playChannel,wsGroup);
 
-        System.out.println(session.getId() + " 加入连接  组为："+playChannel);
+        System.out.println(session.getId() + " join websocket, group is："+playChannel);
     }
 
     @OnClose
-    public void onClose(Session session){ System.out.println(session.getId() + " 关闭连接");  }
+    public void onClose(Session session){ System.out.println(session.getId() + " close the connection");  }
 
     @OnError
     public void onError(Session session, Throwable error){  
-       System.out.println(session.getId() + " 发生错误");
+       System.out.println(session.getId() + " have some error");
        error.printStackTrace(); 
     }
 

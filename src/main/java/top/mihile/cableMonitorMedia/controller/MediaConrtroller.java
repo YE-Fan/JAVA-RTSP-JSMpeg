@@ -94,11 +94,19 @@ public class MediaConrtroller {
 
     @RequestMapping("/upload/{playChannel}")
     public void upload(@PathVariable("playChannel") String playChannel, HttpServletRequest request){
-        // 从ffmpeg读取数据
+        // read data from ffmpeg upload stream
+        ServletInputStream inputStream = null;
         try{
-            ServletInputStream inputStream = request.getInputStream();
+            inputStream = request.getInputStream();
+        }catch (IOException e){
+            System.out.println("open ffmpeg inputStream fail");
+            e.printStackTrace();
+            return;
+        }
+
             byte[] buffer = new byte[10*1024];
             int len = 0;
+        try{
             while ((len = inputStream.readLine(buffer,0,buffer.length))!=-1){
               // 广播数据
               Map<String, Session> wsGroup = WebsockerService.map.get(playChannel);
@@ -116,15 +124,15 @@ public class MediaConrtroller {
                           }
                       }catch (Exception e){
                           e.printStackTrace();
-                          System.out.println("session"+session.getId()+"已经关闭");
+                          System.out.println("session"+session.getId()+"has bean closed");
                       }
                   }
               }
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (IOException e) {
+            // ffmpeg was closed,so inputStream was closed
         }
-        System.out.println("upload end");
+        System.out.println("ffmpeg upload end");
     }
 
 

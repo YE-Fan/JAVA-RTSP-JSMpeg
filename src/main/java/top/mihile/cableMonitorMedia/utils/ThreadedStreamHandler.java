@@ -100,6 +100,7 @@ public class ThreadedStreamHandler extends Thread
         outputBuffer.append(line).append("\n");
       }
       System.out.println("stream thread end");
+      System.out.println("=================print ffmpeg running/error log=================================");
       System.out.println(getOutputBuffer());
     }
     catch (IOException ioe)
