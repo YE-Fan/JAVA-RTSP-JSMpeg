@@ -42,7 +42,7 @@ public class RtspTransService {
 //        commands.add("nobuffer");
         commands.add("-codec:v");
         commands.add("mpeg1video");
-        commands.add("-an");  // 不能使音频记录
+        commands.add("-an");  // 不能使音频记录,否则会大大降低转码效率，造成画面延迟卡顿
         commands.add("-s");
         commands.add("640x480");
         commands.add("http://127.0.0.1:"+port+"/stream/upload/"+playChannel);

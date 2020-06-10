@@ -123,7 +123,7 @@ public class MediaConrtroller {
                               wsGroup.remove(sessionId);
                           }
                       }catch (Exception e){
-                          e.printStackTrace();
+                          //e.printStackTrace();
                           System.out.println("session"+session.getId()+"has bean closed");
                       }
                   }
