@@ -58,7 +58,8 @@ websocket播放地址就是 ws://127.0.0.1:3000/stream/live/72b8cf14-f74b-3368-a
 在top.mihile.cableMonitorMedia.service.RtspTransService这个类中修改ffmpeg参数，默认是640*480  
 
 3. 画面卡顿、延迟  
-在top.mihile.cableMonitorMedia.service.RtspTransService这个类中修改ffmpeg参数，不同的转码参数造成的画面质量等会不同  
+在top.mihile.cableMonitorMedia.service.RtspTransService这个类中修改ffmpeg参数，不同的转码参数造成的画面质量等会不同。  
+如果是非局域网环境下，检查服务器带宽是否满足，1Mbps带宽大约可播放480P的视频，调低摄像头画面质量试试。  
 
 4. 没有声音  
 这个方法不适合播放音频，ffmpeg转码加入音频参数会大大降低效率，可能造成画面延迟、卡顿，如有需要自行研究  
